@@ -76,7 +76,7 @@
     <Library binaryName="Resources" id="810297286" label="Resources">
       <File filePath="resources/default.4st"/>
     </Library>
-    <Application binaryName="Src" dependencies="14000,1986" id="18736" label="Src">
+    <Application binaryName="wc_test" dependencies="14000,1986" id="18736" label="wc_test">
       <File filePath="src/main.4gl"/>
       <File excludeFromLink="true" filePath="src/test_chart.4gl"/>
       <File filePath="src/test_chart.per"/>

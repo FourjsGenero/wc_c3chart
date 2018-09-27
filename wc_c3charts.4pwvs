@@ -7,7 +7,7 @@
     <Node path="wc_c3charts.4pw/Project/Docs/api" type="pm/virtual-folder"/>
     <Node path="wc_c3charts.4pw/Project/Docs/src" type="pm/virtual-folder"/>
     <Node path="wc_c3charts.4pw/Project/Resources" type="pm/library"/>
-    <Node path="wc_c3charts.4pw/Project/Src" type="pm/application"/>
+    <Node path="wc_c3charts.4pw/Project/wc_test" type="pm/application"/>
     <Node path="wc_c3charts.4pw/Project/WebComponents" type="pm/library"/>
     <Node path="wc_c3charts.4pw/Project/WebComponents/API" type="pm/virtual-folder"/>
     <Node path="wc_c3charts.4pw/Project/WebComponents/wc_c3chart" type="pm/virtual-folder"/>
