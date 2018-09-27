@@ -1,0 +1,57 @@
+/*
+ * Property of Four Js*
+ * (c) Copyright Four Js 1995, 2018. All Rights Reserved.
+ * * Trademark of Four Js Development Tools Europe Ltd
+ *   in the United States and elsewhere
+ */
+
+body{
+  background-color : #ffffff;
+  background: #ffffff;
+}
+
+th.summary { 
+  text-align:left;
+  background: #ccccff;
+  font-weight: bold 120%;
+}
+
+td.summary-id { 
+  vertical-align: top;
+}
+
+td.summary-text { 
+  vertical-align: top;
+}
+
+tr.summary { 
+}
+
+td.err { 
+  background: #ffc0c0;
+}
+
+/*code {color:maroon}*/
+.linenumber {color:blue}
+.comment    {color:blue}
+.reserved   {color:purple}
+.literal    {color:red}
+
+pre.per {
+  background: #ffffcc;
+  padding: 10pt;
+}
+
+table.aui { 
+  /*  width:100%; */
+}
+
+td.aui1 { 
+  background: #e8e8e8;
+  padding: 2pt;
+  vertical-align: top;
+}
+td.aui2 { 
+  padding: 2pt;
+  background: #f0f0ff;
+}

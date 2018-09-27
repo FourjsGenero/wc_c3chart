@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ASCII'?>
+<api_class name="main" package="src" top="../" next="test_chart">
+  <function name="Run">
+    <api_param name="p_request" type="STRING"/>
+  </function>
+  <function name="main"/>
+</api_class>

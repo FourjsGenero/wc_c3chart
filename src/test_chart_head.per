@@ -1,0 +1,47 @@
+layout (text="test_chart_hdr")
+  grid
+    {
+    Title     [f01                          ]
+    Narrative [f02                                     ] focus [x]
+    
+    <G gaxis                                                       >
+     Rotate   [y]
+     X Type   [f21       ]             Y Type   [f23        ]
+       Label  [f22             ]         Label  [f24              ]
+       Grid   [a]                        Grid   [b]
+
+    <G glegend                       ><G gtooltip                  >
+     Show     [c]                      Show     [d]
+     Position [f31       ]             Grouped  [e]
+                                       Format   [f32              ]
+    }
+  end --grid
+end --layout
+
+attributes
+  edit f01 = formonly.title;
+  edit f02 = formonly.narrative;
+  checkbox x = formonly.showfocus, not null;
+
+  group gaxis : text="Axes";
+  checkbox y = formonly.rotated, not null;
+  combobox f21 = formonly.x_type;
+  edit f22 = formonly.x_label;
+  combobox f23 = formonly.y_type;
+  edit f24 = formonly.y_label; 
+  checkbox a = formonly.x_grid, not null;
+  checkbox b = formonly.y_grid, not null;
+  group glegend : text="Legend";
+  checkbox c = formonly.legend_show, not null;
+  combobox f31 = formonly.legend_position;
+  group gtooltip : text="Tooltip";
+  checkbox d = formonly.tooltip_show, not null;
+  checkbox e = formonly.tooltip_grouped, not null;
+  edit f32 = formonly.tooltip_format;
+
+end --attributes
+
+instructions
+  screen record hdr (title thru showfocus);
+  screen record axes (rotated thru tooltip_format);
+end --instructions

@@ -1,0 +1,40 @@
+layout (text="test_chart_data")
+  grid
+    {
+     Type     [f01       ] (default)
+    <G gdataxes                                                                 >
+     X        [f21       ]            Y        [f23        ]
+       Format [f22             ]        Format [f24              ]
+       
+    <G gcolumn                                                                  >
+     <T tcolumns                                                               >
+     [f31       |d01     |d02     |d03     |d04     |d05     |d06     |d07     ]
+    }
+  end --grid
+end --layout
+
+attributes
+  combobox f01 = formonly.type;
+
+  group gdataxes : text="Axes";
+  combobox f21 = formonly.x;
+  edit f22 = formonly.xformat;
+  combobox f23 = formonly.y;
+  edit f24 = formonly.yformat;  
+
+  group gcolumn : text="Columns";
+  combobox f31 = formonly.col_type, title="Type";
+  edit d01 = formonly.data1, title="Data";
+  edit d02 = formonly.data2, title="1";
+  edit d03 = formonly.data3, title="2";
+  edit d04 = formonly.data4, title="3";
+  edit d05 = formonly.data5, title="4";
+  edit d06 = formonly.data6, title="5";
+  edit d07 = formonly.data7, title="6";
+  
+end --attributes
+
+instructions
+  screen record data (type thru yformat);
+  screen record columns (col_type thru data7);
+end --instructions

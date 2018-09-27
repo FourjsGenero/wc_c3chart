@@ -1,0 +1,172 @@
+JS-API
+
+https://c3js.org/reference.html
+
+
+// creates a new chart
+c3.generate(
+ {
+ data: {
+       x: 'x',
+       xFormat: '%Y%m%d',
+       y: 'y',
+
+       columns:
+         [
+           ['x', n,n,n,n],
+           ['data1', n,n,n,n],
+           ['data2', n,n,n,n],
+           ['data3', n,n,n,n]
+           ['data4', n,n,n,n]
+           ['data5', n,n,n,n]
+           ['data6', n,n,n,n]
+	 ],
+
+	 type : 'pie',
+	 types :
+	   {
+	   data3: 'spline',
+	   data4: 'line',
+	   data6: 'area'
+	   },
+
+	 groups:
+	   [
+	     ['data1', 'data2']
+	   ],
+
+	 onclick : function (d,i) {...},
+	 onmouseover : function (d,i) {...},
+	 onmouseout : function (d,i) {...},
+	},
+
+  axis: {
+   rotated: false
+        x: {
+            type: 'category',
+            categories: ['cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6', 'cat7', 'cat8', 'cat9']
+        }
+    }
+
+ grid:
+   {
+     y:
+       {
+         lines: [{values:0}]
+       }
+   },
+
+ axis:
+   {
+     x:
+       {
+       label: 'x-axis'
+       },
+     y:  
+       {
+       label: 'y-axis'
+       }
+   },
+
+ legend:
+   {
+   position: 'right',
+   show: true
+   },
+
+ tooltip:
+   {
+   show: true,
+   grouped: true,
+   format: d3.format("$")
+   },
+
+ size:
+   {
+   height: 240,
+   width: 480
+   },
+
+   padding:
+     {
+        top: 40,
+        right: 100,
+        bottom: 40,
+        left: 100,
+    },
+
+    color: {
+        pattern: ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
+    },
+
+pie: {
+        label: {
+            format: function (value, ratio, id) {
+                return d3.format('$')(value);
+            }
+        }
+    }
+
+ });
+
+// this will add to the existing chart
+chart.load(
+  {
+  columns ...
+  }
+
+
+// this will remove specific columns from the chart
+chart.unload(
+  {
+  ids: 'data1'
+  });
+
+
+// transform chart
+chart.transform('pie');
+
+// Change data name
+chart.data.names({data1: 'data1', data2: 'data2'});
+
+// data colors
+chart.data.colors({
+        data1: d3.rgb('#ff0000').darker(1),
+        data2: d3.rgb('#00ff00').darker(1),
+        data3: d3.rgb('#0000ff').darker(1),
+    });
+
+// axis labels
+chart.axis.labels({y: 'New Y Axis Label', y2: 'New Y2 Axis Label Again'});
+
+// axis min and max
+chart.axis.max(500);
+chart.axis.min(-500);
+chart.axis.max({y: 600, y2: 100});
+chart.axis.range({max: 1000, min: -1000});
+chart.axis.range({max: {x: 5}, min: {x: 0}});
+
+// Resize
+chart.resize()
+chart.resize({height:200})
+chart.resize({height:100, width:300})
+
+// Grids
+chart.xgrids([{value: 1, text:'Label 1'}, {value: 4, text: 'Label 4'}]);
+chart.xgrids.add([{value: 3, text:'Label 3', class:'hoge'}]);
+chart.xgrids.remove({value:2});
+
+
+// Types of charts
+area
+area-spline
+bar
+donut
+gauge
+line
+pie
+scatter
+spline
+
+
+PUBLIC
