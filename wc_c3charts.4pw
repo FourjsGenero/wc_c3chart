@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Project defaultApplication="18736" gstVersion="30a09" version="3.2">
+<Project defaultApplication="18736" gstVersion="30a0a" version="3.2">
   <Settings>
     <DynamicProperties version="2">
       <DynamicProperty description="Accent color (Android 5.0 and later)" initialValue="#9575CD" isDefaultInherited="false" isHidden="false" label="Accent color" name="gma-accent-color" readOnly="false" type="COLOR"/>
@@ -8,8 +8,8 @@
       <DynamicProperty description="Navigation bar background color (Android 5.0 and later)" initialValue="#5E35B1" isDefaultInherited="false" isHidden="false" label="Navigation bar background color" name="gma-navigationBarBackground-color" readOnly="false" type="COLOR"/>
       <DynamicProperty description="Primary color (Android 5.0 and later)" initialValue="#5E35B1" isDefaultInherited="false" isHidden="false" label="Primary color" name="gma-primary-color" readOnly="false" type="COLOR"/>
       <DynamicProperty description="Primary dark color (Android 5.0 and later)" initialValue="#5E35B1" isDefaultInherited="false" isHidden="false" label="Primary dark color" name="gma-primary-dark-color" readOnly="false" type="COLOR"/>
-      <DynamicProperty description="Primary text color (Android 5.0 and later)" initialValue="#80000000" isDefaultInherited="false" isHidden="false" label="Primary text color" name="gma-primaryText-color" readOnly="false" type="COLOR"/>
-      <DynamicProperty description="Window backround color (Android 5.0 and later)" initialValue="#ffffffff" isDefaultInherited="false" isHidden="false" label="Window background color" name="gma-windowBackground-color" readOnly="false" type="COLOR"/>
+      <DynamicProperty description="Primary text color (Android 5.0 and later)" initialValue="#000000" isDefaultInherited="false" isHidden="false" label="Primary text color" name="gma-primaryText-color" readOnly="false" type="COLOR"/>
+      <DynamicProperty description="Window backround color (Android 5.0 and later)" initialValue="#ffffff" isDefaultInherited="false" isHidden="false" label="Window background color" name="gma-windowBackground-color" readOnly="false" type="COLOR"/>
       <DynamicProperty description="Cordova plugins" editorInfo="isDynamic:true;title:Cordova;description:Cordova plugins;icon:checkbox_checked" initialValue="" isDefaultInherited="false" isHidden="false" label="Cordova Plugins" name="gmi-cordova" readOnly="false" type="MULTIPLEBOOLEAN"/>
       <DynamicProperty description="High-DPI Icon (72x72 px) path" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Icon-hdpi (72x72 px)" name="icon-hdpi" readOnly="false" type="FILE"/>
       <DynamicProperty description="Low-DPI Icon (36x36 px) path" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Icon-ldpi (36x36 px)" name="icon-ldpi" readOnly="false" type="FILE"/>
@@ -66,12 +66,12 @@
   <Group environment="dirlist:FGLIMAGEPATH=$(ProjectDir);$(ProjectDir)/webcomponents,dirlist:FGLRESOURCEPATH=$(ProjectDir)/resources:$(FGLRESOURCEPATH),dirlist:FGLSOURCEPATH=$(ProjectDir)/webcomponents/api:$(FGLSOURCEPATH)" label="Project" language="Genero">
     <Library binaryName="Docs" id="-130893450" label="Docs">
       <VirtualFolder label="api">
-        <File excludeFromLink="true" filePath="webcomponents/api/package-info.4gl"/>
+        <File excludeFromCompilation="true" excludeFromLink="true" filePath="webcomponents/api/package-info.4gl"/>
       </VirtualFolder>
       <VirtualFolder label="src">
-        <File excludeFromLink="true" filePath="src/package-info.4gl"/>
+        <File excludeFromCompilation="true" excludeFromLink="true" filePath="src/package-info.4gl"/>
       </VirtualFolder>
-      <File compilerOptions="--build-doc" excludeFromLink="true" filePath="overview.4gl"/>
+      <File compilerOptions="--build-doc" excludeFromCompilation="true" excludeFromLink="true" filePath="overview.4gl"/>
     </Library>
     <Library binaryName="Resources" id="810297286" label="Resources">
       <File filePath="resources/default.4st"/>

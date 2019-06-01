@@ -10,29 +10,29 @@
 <Call c="23" i="test_chart" l="75" n="Test" p="src/test_chart.4gl" t="F"/>
 <Call c="12" l="77" n="Menu" t="F"/>
 </Fct>
-<Fct c="18" el="61" l="51" n="Menu()" t="F">
+<Fct c="18" el="61" l="51" n="Menu()" t="F" v="pub">
 <Call c="12" l="57" n="Run" t="F"/>
 </Fct>
-<Fct c="18" el="45" l="44" n="Teardown()" t="F"/>
-<Fct c="18" el="38" l="31" n="Setup()" t="F"/>
+<Fct c="18" el="45" l="44" n="Teardown()" t="F" v="pub"/>
+<Fct c="18" el="38" l="31" n="Setup()" t="F" v="pub"/>
 <Fct c="1" el="25" l="17" n="main()" t="F" v="pub">
 <Call c="8" l="23" n="Run" t="F"/>
 </Fct>
 </File>
 <File m="test_chart" n="src/test_chart.4gl" ts="20180920162756408">
 <Dep t="webcomponents/api/wc_c3chart.4gl"/>
-<Fct c="16" el="303" l="293" n="chart_Columns()" t="D">
+<Fct c="16" el="303" l="293" n="chart_Columns()" t="D" v="pub">
 <Call c="12" l="299" n="Table" t="F"/>
 <Call c="23" i="wc_c3chart" l="300" n="Set" p="webcomponents/api/wc_c3chart.4gl" t="F"/>
 </Fct>
-<Fct c="16" el="287" l="272" n="chart_Data()" t="D">
+<Fct c="16" el="287" l="272" n="chart_Data()" t="D" v="pub">
 <Call c="25" i="wc_c3chart" l="284" n="Set" p="webcomponents/api/wc_c3chart.4gl" t="F"/>
 </Fct>
-<Fct c="16" el="266" l="237" n="chart_Head()" t="D">
+<Fct c="16" el="266" l="237" n="chart_Head()" t="D" v="pub">
 <Call c="25" i="wc_c3chart" l="263" n="Set" p="webcomponents/api/wc_c3chart.4gl" t="F"/>
 </Fct>
-<Fct c="18" el="226" l="222" n="random_Data(p_max INTEGER)" t="F"/>
-<Fct c="18" el="216" l="199" n="combo_List(p_field STRING,p_list STRING)" t="F">
+<Fct c="18" el="226" l="222" n="random_Data(p_max INTEGER)" t="F" v="pub"/>
+<Fct c="18" el="216" l="199" n="combo_List(p_field STRING,p_list STRING)" t="F" v="pub">
 <Call c="19" i="wc_c3chart" l="207" n="Domain" p="webcomponents/api/wc_c3chart.4gl" t="F"/>
 </Fct>
 <Fct c="10" el="186" l="139" n="Table(p_direction STRING)" t="F" v="pub"/>
@@ -63,13 +63,13 @@
 <Call c="23" i="wc_c3chart" l="92" n="Set" p="webcomponents/api/wc_c3chart.4gl" t="F"/>
 <Call c="8" l="99" n="Teardown" p="src/main.4gl" t="F"/>
 </Fct>
-<Fct c="18" el="40" l="39" n="Teardown()" t="F"/>
-<Fct c="18" el="33" l="31" n="Setup()" t="F">
+<Fct c="18" el="40" l="39" n="Teardown()" t="F" v="pub"/>
+<Fct c="18" el="33" l="31" n="Setup()" t="F" v="pub">
 <Call c="19" i="wc_c3chart" l="32" n="Init" p="webcomponents/api/wc_c3chart.4gl" t="F"/>
 </Fct>
 </File>
 <File m="wc_c3chart" n="webcomponents/api/wc_c3chart.4gl" ts="20180921194500302">
-<Fct c="18" el="313" l="306" n="trace(p_data STRING)" t="F"/>
+<Fct c="18" el="313" l="306" n="trace(p_data STRING)" t="F" v="pub"/>
 <Fct c="17" el="288" l="283" n="Serialize(r_chart RECORD)" t="F" v="pub">
 <Call c="8" l="285" n="trace" t="F"/>
 </Fct>

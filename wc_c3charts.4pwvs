@@ -29,5 +29,5 @@
       <Data name="8" value="UTF-8"/>
     </Document>
   </OpenDocuments>
-  <CurrentDocument filePath="src/test_chart.4gl" module="mod-ce3"/>
+  <CurrentDocument filePath="webcomponents/wc_c3chart/wc_c3chart.js" module="mod-ce3"/>
 </WorkspaceViewState>
