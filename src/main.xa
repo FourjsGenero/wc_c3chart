@@ -1,7 +1,7 @@
-<?xml version='1.0' encoding='ASCII'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <api_class name="main" package="src" top="../" next="test_chart">
-  <function name="Run">
+  <function name="main" modifier="public"/>
+  <function name="Run" modifier="public">
     <api_param name="p_request" type="STRING"/>
   </function>
-  <function name="main"/>
 </api_class>

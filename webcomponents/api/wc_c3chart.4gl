@@ -1,3 +1,4 @@
+import FGL str
 import util
 
 #
@@ -91,8 +92,13 @@ public type
   end record
 
 public define
-  m_trace boolean
+  m_trace boolean = FALSE
 
+
+
+#
+# Class Methods
+#
 
   
 #
@@ -103,65 +109,8 @@ public define
 #+ call wc_c3chart.Init()
 #
 public function Init()
-
-  let m_trace = FALSE
-  
-end function
-
-
-
-#
-#! Create
-#+ Creates a new instance of Chart
-#+
-#+ @param p_field     Form name of the field
-#+ @returnType        tChart
-#+ @return            Chart record
-#+
-#+ @code
-#+ define r_acc wc_c3chart.tChart
-#+ call wc_c3chart.Create("formonly.p_chart") returning r_chart.*
-#
-public function Create(p_field string) returns tChart
-
-  define
-    r_chart tChart
-
-
-  -- Field name of widget
-  let r_chart.field = p_field
-
-  -- Set defaults
-  let r_chart.doc.axis.rotated = FALSE
-  let r_chart.doc.legend.show = TRUE
-  let r_chart.doc.tooltip.show = TRUE
-
-  return r_chart.*
-  
-end function
-
-
-#
-#! Column_Set
-#+ Set tColumn of data from JSONArray string
-#+
-#+ @param p_json    JSON array of strings
-#+
-#+ @code
-#+ define p_json string, o_col tColumn
-#+ call wc_color.Column_Set('["alpha","100","180","240"]') returning o_col
-#
-public function Column_Set(p_json string) returns tColumn
-
-  define
-    o_jArr util.JSONArray,
-    a_col tColumn
-
-  let o_jArr = util.JSONArray.parse(p_json)
-  call o_jArr.toFGL(a_col)
-  
-  return a_col
-  
+  #% no longer needed, but for any other initializations
+  #let m_trace = FALSE
 end function
 
 
@@ -179,36 +128,15 @@ end function
 public function Domain(p_domain string) returns dynamic array of string
 
   define
-    a_list dynamic array of string,
-    i integer
+    a_list dynamic array of string
 
   case p_domain.toUpperCase()
     when "CHART_TYPE"
-      let i = 0
-      let a_list[i:=i+1] = ""
-      let a_list[i:=i+1] = "line"
-      let a_list[i:=i+1] = "spline"
-      let a_list[i:=i+1] = "step"
-      let a_list[i:=i+1] = "area"
-      let a_list[i:=i+1] = "area-spline"
-      let a_list[i:=i+1] = "area-step"
-      let a_list[i:=i+1] = "bar"
-      let a_list[i:=i+1] = "scatter"
-      let a_list[i:=i+1] = "pie"
-      let a_list[i:=i+1] = "donut"
-      let a_list[i:=i+1] = "gauge"
+      call str.ArraySet(a_list, '["","line","spline","step","area","area-spline","area-step","bar","scatter","pie","donut","gauge"]')
     when "AXIS_TYPE"
-      let i = 0
-      let a_list[i:=i+1] = ""
-      let a_list[i:=i+1] = "indexed"
-      let a_list[i:=i+1] = "category"
-      let a_list[i:=i+1] = "timeseries"
+      call str.ArraySet(a_list, '["","indexed","category","timeseries"]')
     when "POSITION"
-      let i = 0
-      let a_list[i:=i+1] = ""
-      let a_list[i:=i+1] = "bottom"
-      let a_list[i:=i+1] = "right"
-      let a_list[i:=i+1] = "inset"
+      call str.ArraySet(a_list, '["","bottom","right","inset"]')
   end case
   
   return a_list
@@ -218,59 +146,36 @@ end function
 
 
 #
-#! Set
-#+ Set initial contents of widget
+# tChart::Methods
+#
+
+#
+#! tChart.New
+#+ Define a new instance of Chart
 #+
-#+ @param r_chart  Chart instance
+#+ @param p_field     Form name of the field
 #+
 #+ @code
-#+ define r_chart tChart
-#+ let r_chart.data.x = "x"
-#+ ...
-#+ call wc_c3chart.Set(r_chart.*)
+#+ define r_chart wc_c3chart.tChart
+#+ call r_chart.New("formonly.p_chart")
 #
-public function Set(r_chart tChart)
+public function (this tChart) New(p_field string)
 
-  call ui.Interface.frontCall("webcomponent", "call", [r_chart.field, "Set", Serialize(r_chart.*)], [])
-  
-end function
+  -- Field name of widget
+  let this.field = p_field
 
-
-#
-#! Element
-#+ DeSerialize a selected chart element
-#+
-#+ @param p_json    JSON encoded element
-#+ @returnType      tElement
-#+ @return          Element record
-#+
-#+ @code
-#+ define r_element tElement, p_json string
-#+ call wc_c3chart.Element(p_json) returning r_element
-#
-public function Element(p_json string) returns tElement
-
-  define
-    r_element tElement
-
-
-  call trace(p_json)
-  if (p_json.getLength())
-  then
-    call util.JSON.parse(p_json, r_element)
-  end if
-
-  return r_element.*
+  -- Set defaults
+  let this.doc.axis.rotated = FALSE
+  let this.doc.legend.show = TRUE
+  let this.doc.tooltip.show = TRUE
   
 end function
 
 
 
 #
-#! Serialize
+#! tChart.Serialize
 #+ Serialize a chart
-#+
-#+ @param r_chart   tChart
 #+
 #+ @returnType string
 #+ @return JSON string of tChart.doc structure
@@ -278,12 +183,82 @@ end function
 #+ @code
 #+ define r_chart wc_c3chart.tChart,
 #+   p_json string
-#+ let p_json = wc_c3chart.Serialize(r_chart.*)
+#+ let p_json = r_chart.Serialize()
 #
-public function Serialize(r_chart tChart) returns string
+public function (this tChart) Serialize() returns string
 
-  call trace(util.JSON.stringify(r_chart))
-  return util.JSON.stringify(r_chart)
+  call trace(util.JSON.stringify(this))
+  return util.JSON.stringify(this)
+  
+end function
+
+
+
+#
+#! tChart.Set
+#+ Set initial contents of widget
+#+
+#+ @code
+#+ define r_chart tChart
+#+ let r_chart.data.x = "x"
+#+ ...
+#+ call r_chart.Set()
+#
+public function (this tChart) Set()
+
+  call ui.Interface.frontCall("webcomponent", "call", [this.field, "Set", this.Serialize()], [])
+  
+end function
+
+
+
+#
+# tData::Methods
+#
+
+#
+#! tData.Set
+#+ Set column of data from JSONArray string
+#+
+#+ @param p_json    JSON array of strings
+#+
+#+ @code
+#+ define r_data tData
+#+ call r_data.Set(1, '["alpha","100","180","240"]')
+#
+public function (this tData) Set(p_idx integer, p_json string)
+
+  call str.ArraySet(this.columns[p_idx], p_json)
+
+end function
+
+
+
+
+
+#
+# tElement::Methods
+#
+
+#
+#! tElement.Get
+#+ DeSerialize a selected chart element from JSON string
+#+
+#+ @param p_json    JSON encoded element
+#+ @returnType      tElement
+#+ @return          Element record
+#+
+#+ @code
+#+ define r_element tElement, p_json string
+#+ call tElement.Get(p_json)
+#
+public function (this tElement) Get(p_json string)
+
+  call trace(p_json)
+  if (p_json.getLength())
+  then
+    call util.JSON.parse(p_json, this)
+  end if
   
 end function
 

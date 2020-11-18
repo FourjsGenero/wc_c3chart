@@ -28,8 +28,7 @@ private define
 #
 #! Setup
 #
-private function Setup()  
-  call wc_c3chart.Init()
+private function Setup()
 end function
 
 
@@ -42,7 +41,7 @@ end function
 
 
 #
-#! Test
+#! Test   Test app for chart
 #
 public function Test()
 
@@ -53,14 +52,13 @@ public function Test()
   call Setup()
 
   -- Init
-  call wc_c3chart.Create("formonly.p_chart") returning mr_chart.*
+  call mr_chart.New("formonly.p_chart")
   let mr_chart.title = "Power Profile"
   let mr_chart.narrative = "Results of Standing Starts"
   let r_element.id = NULL
   
   -- Load some content & defaults
-  call Load(mr_chart.*, r_element.*)
-  call Table("SET")
+  call Load(mr_chart, r_element)
   let mr_chart.doc.data.type = "spline"
   let mr_chart.doc.axis.x.label = "Effort"
   let mr_chart.doc.axis.y.label = "Watts"
@@ -73,7 +71,8 @@ public function Test()
   call combo_List("y_type", "AXIS_TYPE")  
   call combo_List("legend_position", "POSITION")  
   call combo_List("col_type", "CHART_TYPE")  
-  call wc_c3chart.Set(mr_chart.*)
+  call mr_chart.Set()
+  call Table("SET")
 
   -- Interact
   dialog attributes(unbuffered)
@@ -83,13 +82,13 @@ public function Test()
 
     on action select attribute(defaultview=no)
       -- Get the element that was selected
-      call wc_c3chart.Element(m_chart)
-        returning r_element.*
+      call r_element.Get(m_chart)
         
       -- Load next set of data based on user selected element & Refresh
       message "Fetch data for: " || m_chart
-      call Load(mr_chart.*, r_element.*)
-      call wc_c3chart.Set(mr_chart.*)
+      call Load(mr_chart, r_element)
+      call mr_chart.Set()
+      call Table("SET")
       
     on action close
       exit dialog
@@ -103,10 +102,10 @@ end function
 
 
 #
-#! Load
+#! Load   Load data into chart
 #
 
-public function Load(r_chart wc_c3chart.tChart, r_element wc_c3chart.tElement)
+public function Load(r_chart wc_c3chart.tChart inout, r_element wc_c3chart.tElement inout)
 
   define
     p_max, i,j integer
@@ -114,18 +113,18 @@ public function Load(r_chart wc_c3chart.tChart, r_element wc_c3chart.tElement)
   case
     when r_element.id is NULL
       let i = 0
-      call wc_c3chart.Column_Set('["Alpha","0","50","100","150","200","250"]') returning r_chart.doc.data.columns[i:=i+1]
-      call wc_c3chart.Column_Set('["Beta","30","200","100","400","150","250"]') returning r_chart.doc.data.columns[i:=i+1]
-      call wc_c3chart.Column_Set('["Gamma","50","20","10","40","15","25"]') returning r_chart.doc.data.columns[i:=i+1]
-      call wc_c3chart.Column_Set('["Delta","150","180","200","300","240","350"]') returning r_chart.doc.data.columns[i:=i+1]
-      call wc_c3chart.Column_Set('["Epsilon","80","200","150","290","110","220"]') returning r_chart.doc.data.columns[i:=i+1]
-      
+      -- Set data using JSONarray strings, just to show that we can
+      call r_chart.doc.data.Set(i:=i+1, '["Alpha","0","50","100","150","200","250"]')
+      call r_chart.doc.data.Set(i:=i+1, '["Beta","30","200","100","400","150","250"]')
+      call r_chart.doc.data.Set(i:=i+1, '["Gamma","50","20","10","40","15","25"]')
+      call r_chart.doc.data.Set(i:=i+1, '["Delta","150","180","200","300","240","350"]')
+      call r_chart.doc.data.Set(i:=i+1, '["Epsilon","80","200","150","290","110","220"]')
     otherwise
       -- Simulate fetching data for selected element, load some random data
       let p_max = 500
       for j = 1 to 5
         for i = 2 to 7
-          let r_chart.doc.data.columns[j,i] = random_Data(p_max)
+          let r_chart.doc.data.columns[j,i] = data_Random(p_max)
         end for
       end for
   end case
@@ -134,9 +133,9 @@ end function
 
 
 #
-#! Table
+#! Table    Get or Set data between chart and screen table
 #
-function Table(p_direction string)
+public function Table(p_direction string)
   define
     idx integer
 
@@ -193,7 +192,7 @@ end function
 
 
 #
-#! combo_List
+#! combo_List     Set combos for valid chart options
 #
 
 private function combo_List(p_field string, p_list string)
@@ -217,9 +216,9 @@ end function
 
 
 #
-#! random_Data
+#! data_Random    Generate some random data
 #
-private function random_Data(p_max integer)
+private function data_Random(p_max integer)
 
   return security.RandomGenerator.CreateRandomNumber() mod p_max
   
@@ -260,7 +259,7 @@ private dialog chart_Head()
       attributes(without defaults)
       on change title, narrative, showfocus, rotated, x_type, x_label, y_type, y_label, x_grid, y_grid,
         legend_show, legend_position, tooltip_show, tooltip_grouped, tooltip_format
-        call wc_c3chart.Set(mr_chart.*)
+        call mr_chart.Set()
     end input
     
 end dialog
@@ -281,7 +280,7 @@ private dialog chart_Data()
       data.*
     attributes(without defaults)
     on change type, x, y, xFormat, yFormat
-        call wc_c3chart.Set(mr_chart.*)
+        call mr_chart.Set()
   end input
   
 end dialog
@@ -297,7 +296,7 @@ private dialog chart_Columns()
     attributes(without defaults)
     on change col_type, data1, data2, data3, data4, data5, data6, data7
       call Table("GET")
-      call wc_c3chart.Set(mr_chart.*)
+      call mr_chart.Set()
   end input
   
 end dialog

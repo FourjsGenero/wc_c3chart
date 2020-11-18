@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <WorkspaceDatabase fileContentsEncoding="UTF-8" version="3.0">
-<File n="webcomponents/api/package-info.4gl" s="0" ts=""/>
-<File n="src/package-info.4gl" s="0" ts=""/>
-<File n="overview.4gl" s="0" ts=""/>
-<File n="src/main.4gl" s="2" ts="20190822143702134">
+<File n="webcomponents/api/package-info.4gl" s="2" ts="20190723164837978"/>
+<File n="src/package-info.4gl" s="2" ts="20190723164838069"/>
+<File n="overview.4gl" s="2" ts="20190530141925434"/>
+<File n="src/main.4gl" s="2" ts="20190723164838024">
 <Dep t="src/test_chart.4gl"/>
 <Fct c="17" el="80" l="67" n="Run(p_request STRING)" t="F" v="pub">
 <Call c="12" l="74" n="Setup" t="F"/>
@@ -19,69 +19,56 @@
 <Call c="8" l="23" n="Run" t="F"/>
 </Fct>
 </File>
-<File n="src/test_chart.4gl" s="2" ts="20190822143702103">
+<File n="src/test_chart.4gl" s="2" ts="20201105145335714">
 <Dep t="webcomponents/api/wc_c3chart.4gl"/>
-<Fct c="16" el="303" l="293" n="chart_Columns()" t="D" v="prv">
-<Call c="12" l="299" n="Table" t="F"/>
-<Call c="23" i="wc_c3chart" l="300" n="Set" t="F"/>
+<Fct c="16" el="302" l="292" n="chart_Columns()" t="D" v="prv">
+<Call c="12" l="298" n="Table" t="F"/>
 </Fct>
-<Fct c="16" el="287" l="272" n="chart_Data()" t="D" v="prv">
-<Call c="25" i="wc_c3chart" l="284" n="Set" t="F"/>
+<Fct c="16" el="286" l="271" n="chart_Data()" t="D" v="prv"/>
+<Fct c="16" el="265" l="236" n="chart_Head()" t="D" v="prv"/>
+<Fct c="18" el="225" l="221" n="data_Random(p_max INTEGER)" t="F" v="prv"/>
+<Fct c="18" el="215" l="198" n="combo_List(p_field STRING,p_list STRING)" t="F" v="prv">
+<Call c="19" i="wc_c3chart" l="206" n="Domain" t="F"/>
 </Fct>
-<Fct c="16" el="266" l="237" n="chart_Head()" t="D" v="prv">
-<Call c="25" i="wc_c3chart" l="263" n="Set" t="F"/>
+<Fct c="17" el="185" l="138" n="Table(p_direction STRING)" t="F" v="pub"/>
+<Fct c="17" el="132" l="108" n="Load(r_chart RECORD INOUT,r_element RECORD INOUT)" t="F" v="pub">
+<Call c="29" l="117" n="Set" t="F"/>
+<Call c="29" l="118" n="Set" t="F"/>
+<Call c="29" l="119" n="Set" t="F"/>
+<Call c="29" l="120" n="Set" t="F"/>
+<Call c="29" l="121" n="Set" t="F"/>
+<Call c="47" l="127" n="data_Random" t="F"/>
 </Fct>
-<Fct c="18" el="226" l="222" n="random_Data(p_max INTEGER)" t="F" v="prv"/>
-<Fct c="18" el="216" l="199" n="combo_List(p_field STRING,p_list STRING)" t="F" v="prv">
-<Call c="19" i="wc_c3chart" l="207" n="Domain" t="F"/>
-</Fct>
-<Fct c="10" el="186" l="139" n="Table(p_direction STRING)" t="F" v="pub"/>
-<Fct c="17" el="133" l="109" n="Load(r_chart RECORD,r_element RECORD)" t="F" v="pub">
-<Call c="23" i="wc_c3chart" l="117" n="Column_Set" t="F"/>
-<Call c="23" i="wc_c3chart" l="118" n="Column_Set" t="F"/>
-<Call c="23" i="wc_c3chart" l="119" n="Column_Set" t="F"/>
-<Call c="23" i="wc_c3chart" l="120" n="Column_Set" t="F"/>
-<Call c="23" i="wc_c3chart" l="121" n="Column_Set" t="F"/>
-<Call c="47" l="128" n="random_Data" t="F"/>
-</Fct>
-<Fct c="17" el="101" l="47" n="Test()" t="F" v="pub">
-<Call c="8" l="53" n="Setup" t="F"/>
-<Call c="19" i="wc_c3chart" l="56" n="Create" t="F"/>
-<Call c="8" l="62" n="Load" t="F"/>
-<Call c="8" l="63" n="Table" t="F"/>
+<Fct c="17" el="100" l="46" n="Test()" t="F" v="pub">
+<Call c="8" l="52" n="Setup" t="F"/>
+<Call c="8" l="61" n="Load" t="F"/>
+<Call c="8" l="69" n="combo_List" t="F"/>
+<Call c="8" l="70" n="combo_List" t="F"/>
 <Call c="8" l="71" n="combo_List" t="F"/>
 <Call c="8" l="72" n="combo_List" t="F"/>
 <Call c="8" l="73" n="combo_List" t="F"/>
-<Call c="8" l="74" n="combo_List" t="F"/>
-<Call c="8" l="75" n="combo_List" t="F"/>
-<Call c="19" i="wc_c3chart" l="76" n="Set" t="F"/>
-<Call c="15" l="80" n="chart_Head" t="D"/>
-<Call c="15" l="81" n="chart_Data" t="D"/>
-<Call c="15" l="82" n="chart_Columns" t="D"/>
-<Call c="23" i="wc_c3chart" l="86" n="Element" t="F"/>
-<Call c="12" l="91" n="Load" t="F"/>
-<Call c="23" i="wc_c3chart" l="92" n="Set" t="F"/>
-<Call c="8" l="99" n="Teardown" t="F"/>
+<Call c="8" l="75" n="Table" t="F"/>
+<Call c="15" l="79" n="chart_Head" t="D"/>
+<Call c="15" l="80" n="chart_Data" t="D"/>
+<Call c="15" l="81" n="chart_Columns" t="D"/>
+<Call c="12" l="89" n="Load" t="F"/>
+<Call c="12" l="91" n="Table" t="F"/>
+<Call c="8" l="98" n="Teardown" t="F"/>
 </Fct>
-<Fct c="18" el="40" l="39" n="Teardown()" t="F" v="prv"/>
-<Fct c="18" el="33" l="31" n="Setup()" t="F" v="prv">
-<Call c="19" i="wc_c3chart" l="32" n="Init" t="F"/>
-</Fct>
+<Fct c="18" el="39" l="38" n="Teardown()" t="F" v="prv"/>
+<Fct c="18" el="32" l="31" n="Setup()" t="F" v="prv"/>
 </File>
-<File n="webcomponents/api/wc_c3chart.4gl" s="2" ts="20190822143524817">
-<Fct c="18" el="313" l="306" n="trace(p_data STRING)" t="F" v="prv"/>
-<Fct c="17" el="288" l="283" n="Serialize(r_chart RECORD)" t="F" v="pub">
-<Call c="8" l="285" n="trace" t="F"/>
+<File n="webcomponents/api/str.4gl" s="2" ts="20201104131309860">
+<Fct c="17" el="32" l="21" n="ArraySet(pa_str DYNAMIC ARRAY OF STRING,p_json STRING)" t="F" v="pub"/>
+</File>
+<File n="webcomponents/api/wc_c3chart.4gl" s="2" ts="20201118234842432">
+<Dep t="webcomponents/api/str.4gl"/>
+<Fct c="18" el="288" l="281" n="trace(p_data STRING)" t="F" v="prv"/>
+<Fct c="17" el="144" l="128" n="Domain(p_domain STRING)" t="F" v="pub">
+<Call c="16" i="str" l="135" n="ArraySet" t="F"/>
+<Call c="16" i="str" l="137" n="ArraySet" t="F"/>
+<Call c="16" i="str" l="139" n="ArraySet" t="F"/>
 </Fct>
-<Fct c="17" el="265" l="251" n="Element(p_json STRING)" t="F" v="pub">
-<Call c="8" l="257" n="trace" t="F"/>
-</Fct>
-<Fct c="17" el="236" l="232" n="Set(r_chart RECORD)" t="F" v="pub">
-<Call c="78" l="234" n="Serialize" t="F"/>
-</Fct>
-<Fct c="17" el="216" l="179" n="Domain(p_domain STRING)" t="F" v="pub"/>
-<Fct c="17" el="165" l="154" n="Column_Set(p_json STRING)" t="F" v="pub"/>
-<Fct c="17" el="141" l="125" n="Create(p_field STRING)" t="F" v="pub"/>
-<Fct c="17" el="109" l="105" n="Init()" t="F" v="pub"/>
+<Fct c="17" el="114" l="111" n="Init()" t="F" v="pub"/>
 </File>
 </WorkspaceDatabase>

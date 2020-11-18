@@ -1,22 +1,22 @@
-<?xml version='1.0' encoding='ASCII'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <package name="src" qname="src" top="../">
   <api_synopsis>
  src</api_synopsis>
   <api_usage> Main menu and Unit tests for c3chart web comoonent</api_usage>
-  <api_class name="main" package="src" top="../" next="test_chart">
-    <function name="Run">
-      <api_param name="p_request" type="STRING"/>
-    </function>
-    <function name="main"/>
-  </api_class>
   <api_class name="test_chart" package="src" top="../" prev="main">
-    <function name="Table">
+    <function name="Test" modifier="public"/>
+    <function name="Load" modifier="public">
+      <api_param name="r_chart" type="wc_c3chart.tChart" type_name="tChart" type_module="wc_c3chart" inout="INOUT"/>
+      <api_param name="r_element" type="wc_c3chart.tElement" type_name="tElement" type_module="wc_c3chart" inout="INOUT"/>
+    </function>
+    <function name="Table" modifier="public">
       <api_param name="p_direction" type="STRING"/>
     </function>
-    <function name="Load">
-      <api_param name="r_chart" type="wc_c3chart.tChart" type_name="tChart" type_module="wc_c3chart"/>
-      <api_param name="r_element" type="wc_c3chart.tElement" type_name="tElement" type_module="wc_c3chart"/>
+  </api_class>
+  <api_class name="main" package="src" top="../" next="test_chart">
+    <function name="main" modifier="public"/>
+    <function name="Run" modifier="public">
+      <api_param name="p_request" type="STRING"/>
     </function>
-    <function name="Test"/>
   </api_class>
 </package>
